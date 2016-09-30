@@ -12,7 +12,7 @@ namespace NUnit.Helpers.IntegrationTesting.Attributes
     /// Migrate a database to the latest version using DbUp.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class MigrateDatabase : Attribute, ITestAction
+    public class MigrateDatabaseAttribute : Attribute, ITestAction
     {
         private readonly string connectionStringName;
         private readonly bool emptyDatabaseBeforeMigration;
@@ -21,7 +21,7 @@ namespace NUnit.Helpers.IntegrationTesting.Attributes
         /// <param name="assemblyName">Name of the assembly where DbUp migration scripts are located.</param>
         /// <param name="connectionStringName">Name of the connection string to use for connecting to database.</param>
         /// <param name="emptyDatabaseBeforeMigration">Set if database should be emptied before migration is performed. Default is true.</param>
-        public MigrateDatabase(string assemblyName, string connectionStringName = "DefaultConnection", bool emptyDatabaseBeforeMigration = true)
+        public MigrateDatabaseAttribute(string assemblyName, string connectionStringName = "DefaultConnection", bool emptyDatabaseBeforeMigration = true)
         {
             if (connectionStringName == null)
                 throw new ArgumentNullException(nameof(connectionStringName));

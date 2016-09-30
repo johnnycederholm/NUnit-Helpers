@@ -13,18 +13,18 @@ namespace NUnit.Helpers.IntegrationTesting.Attributes
     /// and located as a embedded resource in test assembly.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
-    public class Seed : Attribute, ITestAction
+    public class SeedAttribute : Attribute, ITestAction
     {
         private readonly string connectionStringName;
 
-        public Seed()
+        public SeedAttribute()
         {
             NameSpace = "Seeds";
             connectionStringName = "DefaultConnection";
         }
 
         /// <param name="connectionStringName">Name of the connection string to use when connecting to database for running seed queries.</param>
-        public Seed(string connectionStringName)
+        public SeedAttribute(string connectionStringName)
         {
             if (connectionStringName == null)
                 throw new ArgumentNullException(nameof(connectionStringName));
@@ -74,7 +74,7 @@ namespace NUnit.Helpers.IntegrationTesting.Attributes
             try
             {
                 stream = assembly.GetManifestResourceStream(resourceName);
-                
+
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     return reader.ReadToEnd();
