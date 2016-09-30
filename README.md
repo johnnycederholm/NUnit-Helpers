@@ -17,7 +17,6 @@ Can be used in conjunction with the Seed attribute to also rollback all changes 
 /*
   Automatically rollback changes made during test and performed by the executed seed script.
 */
-
 [Test]
 [AutoRollback]
 [Seed]
@@ -61,7 +60,6 @@ The namespace where seed script is located can be changed by setting the propert
 /*
   Run SQL queried placed in seed script located in Seeds\CanGetPersons.sql.  
 */
-
 [Test]
 [Seed]
 public void CanGetPersons()
