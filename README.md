@@ -5,6 +5,27 @@ A collection of code snippets to make testing with NUnit even easier.
 
 ### Attributes
 
+#### AutoRollback
+
+The AutoRollback attribute can be applied to a class or a method. This makes all changes to automatically be rolled back after the test is performed leaving the database in the same state as before the test.
+
+Can be used in conjunction with the Seed attribute to also rollback all changes performed by the seed script.
+
+**Example:**
+
+```csharp
+/*
+  Automatically rollback changes made during test and performed by the executed seed script.
+*/
+[Test]
+[AutoRollback]
+[Seed]
+public void CanGetPersons()
+{
+  ...
+}
+```
+
 #### MigrateDatabase
 
 The MigrateDatabase attribute can be applied on a class to migrate a database to the latest version based on a definition of migration scripts. The MigrateDatabase attribute depends on [DbUp](https://dbup.github.io/) and the scripts will be found by providing the assembly name where migration scripts is placed. 
@@ -39,7 +60,6 @@ The namespace where seed script is located can be changed by setting the propert
 /*
   Run SQL queried placed in seed script located in Seeds\CanGetPersons.sql.  
 */
-
 [Test]
 [Seed]
 public void CanGetPersons()
